@@ -1,7 +1,19 @@
-body {
-  margin: 0;
+@font-face {
+  font-family: PressStart;
+  src: url(./components/PressStart2P-Regular.ttf);
 }
-
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#gameBoard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
 .main {
   padding: 8px;
 }
@@ -20,4 +32,174 @@ body {
 
 .task > * + * {
   margin-left: 4px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-image: radial-gradient(circle, mediumaquamarine, white);
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: azure;
+  border-radius: 10px;
+  height: 350px;
+  width: 750px;
+  padding: 10px;
+}
+.scoreBoard {
+  font-family: PressStart;
+  text-align: center;
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: aliceblue;
+  width: 200px;
+  height: 150px;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.name {
+  margin: 0;
+}
+.gameArea {
+  font-family: PressStart;
+  font-size: smaller;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 150px;
+}
+#header {
+  margin-bottom: 65px;
+  text-emphasis: bold;
+  font-family: PressStart;
+  font-size: small;
+}
+#wordArea {
+  font-family: PressStart;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+  padding-bottom: 25px;
+}
+.spot {
+  font-size: 1em;
+  width: 15px;
+  height: 30px;
+  margin-top: 2px;
+  padding: 2px;
+  margin-bottom: 0;
+  margin-left: 0.5px;
+  opacity: 1;
+}
+.guessedSpot {
+  font-size: 1em;
+  width: 15px;
+  height: 30px;
+  margin-top: 2px;
+  padding: 2px;
+  margin-bottom: 0;
+  margin-left: 2px;
+  opacity: 1;
+}
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  width: 250px;
+  height: 150px;
+  border-radius: 5px;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  font-family: PressStart;
+  font-size: small;
+}
+.instructions {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  font-family: PressStart;
+  font-size: small;
+}
+.letterArea {
+  font-family: PressStart;
+  display: flex;
+  flex-wrap: wrap;
+  width: 275px;
+  height: 150px;
+  border-radius: 5px;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+.letterButton {
+  font-family: PressStart;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  background-color: mediumaquamarine;
+  /* background-color: bisque; */
+  justify-content: center;
+  height: 18px;
+  width: 18px;
+  border-radius: 5px;
+  margin: 0.5%;
+  font-size: 75%;
+}
+.guessedLetterButton {
+  opacity: 0;
+  pointer-events: none;
+}
+.popup {
+  display: none;
+  position: fixed;
+  height: 200px;
+  width: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: seagreen;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.name-form {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.login {
+  display: block;
+  position: fixed;
+  height: 200px;
+  width: 710px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: seagreen;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+footer {
+  padding: 80px;
 }
