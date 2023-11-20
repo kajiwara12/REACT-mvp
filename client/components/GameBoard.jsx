@@ -19,7 +19,7 @@ const Gameboard = (props) => {
 
   return (
     <div data-testid="gameboard" id="gameBoard">
-      <Canvas width="200" height="200" />
+      <Canvas width="200" height="200" wrongGuesses={wrongGuesses} />
       <WordFetcher
         setWordToGuess={setWordToGuess}
         guessedLetters={guessedLetters}

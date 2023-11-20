@@ -6,7 +6,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  background-color: azure;
+  border-radius: 10px;
+  height: 350px;
+  width: 750px;
+  padding: 10px;
 }
 #gameBoard {
   display: flex;
@@ -42,16 +46,6 @@ body {
   background-image: radial-gradient(circle, mediumaquamarine, white);
 }
 
-#container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: azure;
-  border-radius: 10px;
-  height: 350px;
-  width: 750px;
-  padding: 10px;
-}
 .scoreBoard {
   font-family: PressStart;
   text-align: center;
