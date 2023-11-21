@@ -1,40 +1,86 @@
-# Full-Stack React Example
+# Hangman React App
 
-This repo contains an example of a full-stack application with an express backend and a React frontend.
+Welcome to the Hangman React App! This web application allows users to play the classic game of Hangman. Try to guess the word by selecting letters, but be careful - you only have six incorrect guesses before the game is over!
 
-It uses vite as the module bundler and dotenv for configuration. It's organized as a mono-repo using [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) which allows us to have our client and server in one repo.
+## Features
 
-> **Note**: When you run `npm install` at the root, it will install all dependencies listed in `package.json`, `server/package.json`, and `client/package.json`.
+- **Scoreboard:** View the top 5 scores of players.
+- **Gameboard:** Play the Hangman game, guess the word, and track your progress.
+- **NameForm:** Submit your name and score after a game.
 
-## Customizing the Template
+## Getting Started
 
-1. Create new repo using this one as a template.
-1. Pull that repo down.
-1. Update `./server/migration.sql` to the schema for your application.
+1. **Clone the Repository:**
 
-## Development Setup
+   ```bash
+   git clone <repository-url>
+   cd hangman-react-app
+   ```
 
-1. Install dependencies: `npm install`
-1. Create your database: `createdb YOUR_DB`
-1. Run your migrations: `psql -f server/migration.sql YOUR_DB`
-1. Create your `.env` file: `cp .env.template .env`
-1. Add your info in `.env`
-1. Run the app: `npm run dev`
+2. **Install Dependencies:**
 
-## Scripts
+   ```bash
+   npm install
+   ```
 
-**Root**
+3. **Run the App:**
 
-- `npm run dev` - Runs the API server and hosts your frontend assets.
-- `npm run dev:server` - Runs the API server in watch mode.
-- `npm run dev:client` - Hosts your frontend assets.
+   ```bash
+   npm start
+   ```
 
-**/client**
+   Open [http://localhost:3000](http://localhost:3000) to view the app in your browser.
 
-- `npm run dev` - Hosts your assets.
-- `npm run build` - Builds your assets (mainly used in CI/CD).
+## How to Play
 
-**/server**
+1. **Start a New Game:**
 
-- `npm run dev` - Runs the server in watch mode.
-- `npm run start` - Starts the server (mainly used when deploying).
+   - Click the "Play Again" button to start a new game.
+
+2. **Guess the Word:**
+
+   - Click on the letter buttons to guess the word.
+
+3. **Win or Lose:**
+
+   - Successfully guess the word to win the round.
+   - Make six incorrect guesses, and the game is over.
+
+4. **Submit Your Score:**
+   - After the game, enter your name in the popup to submit your score.
+
+## Components
+
+- **App:** The main component that renders Scoreboard, Gameboard, and NameForm.
+- **Gameboard:** Manages the game logic, Canvas, WordFetcher, and Letters.
+- **NameForm:** Allows users to submit their name and score.
+- **Scoreboard:** Displays the top 5 scores.
+
+## File Structure
+
+- **components:** Contains React components.
+- **app.css:** Stylesheet for the app.
+- **index.html:** HTML file for the app.
+- **index.jsx:** Entry point for React app.
+- **server.js:** Backend server for handling player data.
+
+## Technologies Used
+
+- React
+- Express.js
+- PostgreSQL
+
+## Dependencies
+
+- Frontend: React, React DOM
+- Backend: PostgreSQL, Express
+
+## Acknowledment
+
+The font style is sourced from Google Fonts from CodeMan38 [here](https://fonts.google.com/?query=CodeMan38)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---

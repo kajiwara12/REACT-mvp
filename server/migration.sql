@@ -1,12 +1,14 @@
 DROP TABLE IF EXISTS tasks;
+DROP TABLE IF EXISTS player;
 
-CREATE TABLE tasks (
-  id SERIAL,
-  description TEXT
+CREATE TABLE player (
+    id SERIAL PRIMARY KEY,
+    name TEXT,
+    score INTEGER
 );
-
-INSERT INTO tasks(description) VALUES('Do the dishes');
-INSERT INTO tasks(description) VALUES('Walk the dog');
-INSERT INTO tasks(description) VALUES('Sweep the floor');
-INSERT INTO tasks(description) VALUES('Do your homework');
-INSERT INTO tasks(description) VALUES('Beat Elden Ring');
+INSERT INTO player (name,score) VALUES ('john',5);
+INSERT INTO player (name,score) VALUES ('mike',2);
+INSERT INTO player (name,score) VALUES ('jake',8);
+INSERT INTO player (name,score) VALUES ('ben',9);
+INSERT INTO player (name,score) VALUES ('sean',11);
+INSERT INTO player (name,score) VALUES ('tyler',6);

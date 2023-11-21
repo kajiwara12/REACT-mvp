@@ -10,10 +10,24 @@ const app = express();
 
 app.use(express.json());
 
-app.get("/api/tasks", (req, res) => {
-  sql`SELECT * FROM tasks`.then((rows) => {
+app.get("/api/player", (req, res) => {
+  sql`SELECT * FROM player ORDER BY score DESC LIMIT 5`.then((rows) => {
+    console.log("test");
     res.send(rows);
   });
+});
+
+app.post("/api/player", async (req, res) => {
+  const { name, score } = req.body;
+
+  try {
+    const result =
+      await sql`INSERT INTO player(name, score) VALUES (${name}, ${score}) RETURNING *`;
+    res.json(result[0]);
+  } catch (error) {
+    console.error("Error inserting player:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 app.listen(PORT, () => {

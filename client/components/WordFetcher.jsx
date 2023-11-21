@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 
 const WordFetcher = (props) => {
   const [word, setWord] = useState("");
+  let isHidden = true;
+
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  if (props.wrongGuesses >= 6) {
+    isHidden = false;
+  }
 
   const fetchWord = async () => {
     try {
@@ -13,10 +19,37 @@ const WordFetcher = (props) => {
       console.log(data[0]);
       setWord(fetchedWord);
       props.setWordToGuess(fetchedWord);
+      props.setRoundWin(false);
     } catch (error) {
       console.error("Error fetching word:", error);
     }
   };
+
+  const resetGame = () => {
+    props.setWrongGuesses(0);
+    props.setGuessedLetters([]);
+    props.setScore(0);
+    props.setVisibleLetters(alphabet.split(""));
+    fetchWord();
+  };
+
+  const newWord = () => {
+    props.setWrongGuesses(0);
+    props.setGuessedLetters([]);
+    props.setVisibleLetters(alphabet.split(""));
+    fetchWord();
+    console.log(props.score);
+  };
+
+  useEffect(() => {
+    if (
+      word &&
+      word.split("").every((letter) => props.guessedLetters.includes(letter))
+    ) {
+      props.setRoundWin(true);
+      props.setScore((prevScore) => prevScore + 1);
+    }
+  }, [props.guessedLetters, word]);
 
   useEffect(() => {
     fetchWord();
@@ -25,6 +58,7 @@ const WordFetcher = (props) => {
   return (
     <div className="gameArea">
       <h3 id="header">Wrong Guesses {props.wrongGuesses}/6</h3>
+      <h3 id="header">Score: {props.score}</h3>
       <p>
         {word.split("").map((letter, index) => (
           <span key={index} className="guessedSpot">
@@ -32,7 +66,12 @@ const WordFetcher = (props) => {
           </span>
         ))}
       </p>
-      {/* <button onClick={fetchWord}>Get A Word</button> */}
+      <button onClick={resetGame} hidden={isHidden}>
+        Play Again
+      </button>
+      <button onClick={newWord} hidden={!props.roundWin}>
+        Next Round
+      </button>
     </div>
   );
 };

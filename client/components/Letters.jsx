@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 
 const Letters = (props) => {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let hide = false;
+  if (props.wrongGuesses >= 6) {
+    hide = true;
+  }
+  if (props.roundWin === true) {
+    hide = true;
+  }
+  // const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-  const [visibleLetters, setVisibleLetters] = useState(alphabet.split(""));
+  // const [visibleLetters, setVisibleLetters] = useState(alphabet.split(""));
 
   const handleButtonClick = (letter) => {
-    setVisibleLetters((prevVisibleLetters) =>
+    props.setVisibleLetters((prevVisibleLetters) =>
       prevVisibleLetters.filter((visibleLetter) => visibleLetter !== letter)
     );
     props.setGuessedLetters((prevGuessedLetters) => [
@@ -17,13 +24,14 @@ const Letters = (props) => {
 
   return (
     <div className="letterArea">
-      {visibleLetters.map((letter) => (
+      {props.visibleLetters.map((letter) => (
         <button
           className="letterButton"
           key={letter}
           onClick={() => {
             handleButtonClick(letter);
           }}
+          disabled={hide}
         >
           {letter}
         </button>

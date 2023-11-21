@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from "react";
-// import Canvas from "./canvas";
 import Gameboard from "./GameBoard.jsx";
+import ScoreBoard from "./Scoreboard.jsx";
+import NameForm from "./Nameform.jsx";
 
 const App = () => {
-  const [tasks, setTasks] = useState([]);
-
-  useEffect(() => {
-    fetch("/api/tasks")
-      .then((res) => res.json())
-      .then((tasks) => {
-        setTasks(tasks);
-      });
-  }, []);
+  const [score, setScore] = useState(0);
+  const [guessedLetters, setGuessedLetters] = useState([]);
+  const [wrongGuesses, setWrongGuesses] = useState(0);
 
   return (
     <div id="app">
-      {/* <main>
-        {tasks.map((task) => (
-          <span className="task" key={task.id}>
-            {task.description}
-          </span>
-        ))}
-      </main> */}
-
-      <Gameboard />
+      <ScoreBoard />
+      <Gameboard
+        score={score}
+        setScore={setScore}
+        guessedLetters={guessedLetters}
+        setGuessedLetters={setGuessedLetters}
+        wrongGuesses={wrongGuesses}
+        setWrongGuesses={setWrongGuesses}
+      />
+      <NameForm
+        setWrongGuesses={setWrongGuesses}
+        wrongGuesses={wrongGuesses}
+        score={score}
+        guessedLetters={guessedLetters}
+        setGuessedLetters={setGuessedLetters}
+      />
     </div>
   );
 };
